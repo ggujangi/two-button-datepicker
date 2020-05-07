@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TwoButtonDatePicker">
+        <attr name="ggu_date_layout_id" format="integer|reference"/>
+        <attr name="ggu_date_max_days" format="integer"/>
+        <attr name="ggu_date_min_days" format="integer"/>
+        <attr name="ggu_date_distance" format="integer"/>
+        <attr name="ggu_date_format" format="string"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+        android:id="@+id/ggu_prev_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/selector_btn_prev"/>
+    <TextView
+        android:id="@+id/ggu_date_text"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:layout_weight="1"
+        tools:text="2020년 5월 6일 수요일"/>
+    <ImageView
+        android:id="@+id/ggu_next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/selector_btn_next"/>
+</LinearLayout>
