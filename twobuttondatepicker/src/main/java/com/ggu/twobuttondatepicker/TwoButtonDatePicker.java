@@ -37,7 +37,7 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
         this.clickListener = clickListener;
     }
 
-    public void addOnDateChanedListener(OnDateChangedListener changedListener){
+    public void addOnDateChangedListener(OnDateChangedListener changedListener){
         this.changedListener = changedListener;
     }
 
