@@ -3,7 +3,6 @@ package com.ggu.twobuttondatepickerproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,16 +16,18 @@ public class MainActivity extends AppCompatActivity implements TwoButtonDatePick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TwoButtonDatePicker twoButtonDatePicker = findViewById(R.id.datePickerView);
-        TwoButtonDatePicker twoButtonDatePicker2 = findViewById(R.id.datePickerView2);
-        twoButtonDatePicker.setDatePickerClickListener(this);
-        twoButtonDatePicker2.setDatePickerClickListener(this);
+        TwoButtonDatePicker defaultPickerView = findViewById(R.id.datePickerView_default);
+        TwoButtonDatePicker customPickerView = findViewById(R.id.datePickerView_custom);
 
-        twoButtonDatePicker.addOnDateChanedListener(date->{
-            Log.d("SchduleTest", "date : "+ DateUtils.getTargetDate(date, DateUtils.DATE_FORMAT_FULL_NAME));
+        defaultPickerView.setDatePickerClickListener(this);
+        customPickerView.setDatePickerClickListener(this);
+
+        defaultPickerView.addOnDateChangedListener(date->{
+            Toast.makeText(this, "DEFAULT : "+DateUtils.getTargetDate(date, DateUtils.DATE_FORMAT_FULL_SLASH), Toast.LENGTH_SHORT).show();
         });
-        twoButtonDatePicker2.addOnDateChanedListener(date->{
-            Log.d("SchduleTest", "date : "+DateUtils.getTargetDate(date, DateUtils.DATE_FORMAT_FULL_NAME));
+
+        customPickerView.addOnDateChangedListener(date->{
+            Toast.makeText(this, "CUSTOM : "+DateUtils.getTargetDate(date, DateUtils.DATE_FORMAT_FULL_SLASH), Toast.LENGTH_SHORT).show();
         });
     }
 
