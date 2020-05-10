@@ -22,3 +22,11 @@
 <img src="https://user-images.githubusercontent.com/25583321/81493148-0a80e780-92d9-11ea-8095-6bd47d329e00.gif" width="32%"/>
 </p>
 
+
+
+## How do I use Two-Button DatePicker?
+```xml
+ <com.ggu.twobuttondatepicker.TwoButtonDatePicker
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+```
