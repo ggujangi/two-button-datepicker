@@ -1,148 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/title_default"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="DEFAULT Two-Button-DatePicker"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@android:color/holo_orange_light"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-
-    <com.ggu.twobuttondatepicker.TwoButtonDatePicker
-        android:id="@+id/datePickerView_default"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ggu_date_min_days="3"
-        app:ggu_date_max_days="7"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_default" />
-
-    <TextView
-        android:id="@+id/content_default"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintTop_toBottomOf="@id/datePickerView_default"
-        tools:text="MAX_DAYS : 6\nMIN_DAYS : 7"/>
-
-    <TextView
-        android:id="@+id/title_custom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CUSTOM Two-Button-DatePicker"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@android:color/holo_green_light"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintTop_toBottomOf="@id/content_default"/>
-
-    <com.ggu.twobuttondatepicker.TwoButtonDatePicker
-        android:id="@+id/datePickerView_custom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ggu_date_layout_id="@layout/test_date_picker"
-        app:ggu_date_min_days="3"
-        app:ggu_date_max_days="7"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_custom"/>
-
-    <TextView
-        android:id="@+id/content_custom"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintTop_toBottomOf="@id/datePickerView_custom"
-        tools:text="MAX_DAYS : 6\nMIN_DAYS : 7"/>
-
-    <TextView
-        android:id="@+id/title_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EDIT"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@android:color/darker_gray"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintTop_toBottomOf="@id/content_custom"/>
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/edit_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/title_edit">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
+        <!--Default DatePicker Area-->
         <TextView
-            android:id="@+id/title_max"
-            android:layout_width="wrap_content"
+            android:id="@+id/title_default"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MAX_DAYS : "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="DEFAULT Two-Button-DatePicker"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="#AAABD3"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-        <EditText
-            android:id="@+id/edit_max"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:text="7"
-            android:hint="DEFAULT VALUE IS 7"
-            app:layout_constraintTop_toTopOf="@id/title_max"
-            app:layout_constraintBottom_toBottomOf="@id/title_max"
-            app:layout_constraintLeft_toRightOf="@id/title_max"
-            app:layout_constraintRight_toRightOf="parent"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
-        <TextView
-            android:id="@+id/title_min"
+        <com.ggu.twobuttondatepicker.TwoButtonDatePicker
+            android:id="@+id/datePickerView_default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ggu_date_min_days="3"
+            app:ggu_date_max_days="7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_default" />
+        <Button
+            android:id="@+id/default_reset_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MIN_DAYS : "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/edit_max"
-            app:layout_constraintLeft_toLeftOf="@id/title_max"
-            app:layout_constraintRight_toRightOf="@id/title_max"/>
-
-        <EditText
-            android:id="@+id/edit_min"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:text="7"
-            android:hint="DEFAULT VALUE IS 7"
-            app:layout_constraintTop_toTopOf="@id/title_min"
-            app:layout_constraintBottom_toBottomOf="@id/title_min"
-            app:layout_constraintLeft_toRightOf="@id/title_min"
-            app:layout_constraintRight_toRightOf="parent"/>
-
-        <Button
-            android:id="@+id/default_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="APPLY DEFAULT DATEPICKER"
-            app:layout_constraintTop_toBottomOf="@id/edit_min"
-            app:layout_constraintRight_toLeftOf="@id/custom_btn"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-
-        <Button
-            android:id="@+id/custom_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="APPLY CUSTOM DATEPICKER"
-            app:layout_constraintTop_toBottomOf="@id/edit_min"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/default_btn"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/datePickerView_default"
+            android:text="RESET DEFAULT DATEPICKER"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/content_default"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintTop_toBottomOf="@id/default_reset_btn"
+            tools:text="MAX_DAYS : 6\nMIN_DAYS : 7"/>
+
+
+        <!--Custom DatePicker Area-->
+        <TextView
+            android:id="@+id/title_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#CBA6C3"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="CUSTOM Two-Button-DatePicker"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintTop_toBottomOf="@id/content_default"
+            tools:layout_editor_absoluteX="-34dp" />
+
+        <com.ggu.twobuttondatepicker.TwoButtonDatePicker
+            android:id="@+id/datePickerView_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ggu_date_layout_id="@layout/test_date_picker"
+            app:ggu_date_min_days="3"
+            app:ggu_date_max_days="7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_custom"/>
+
+        <Button
+            android:id="@+id/custom_reset_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/datePickerView_custom"
+
+            android:text="RESET CUSTOM DATEPICKER"/>
+        <TextView
+            android:id="@+id/content_custom"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintTop_toBottomOf="@id/custom_reset_btn"
+            tools:layout_editor_absoluteX="72dp"
+            tools:text="MAX_DAYS : 6\nMIN_DAYS : 7" />
+
+        <!--Edit DatePicker Area-->
+        <TextView
+            android:id="@+id/title_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EDIT"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="#FFFFF2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintTop_toBottomOf="@id/content_custom"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/edit_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@id/title_edit">
+
+            <TextView
+                android:id="@+id/title_max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MAX_DAYS : "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+            <EditText
+                android:id="@+id/edit_max"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="7"
+                android:hint="DEFAULT VALUE IS 7"
+                app:layout_constraintTop_toTopOf="@id/title_max"
+                app:layout_constraintBottom_toBottomOf="@id/title_max"
+                app:layout_constraintLeft_toRightOf="@id/title_max"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/title_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MIN_DAYS : "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/edit_max"
+                app:layout_constraintLeft_toLeftOf="@id/title_max"
+                app:layout_constraintRight_toRightOf="@id/title_max"/>
+
+            <EditText
+                android:id="@+id/edit_min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="7"
+                android:hint="DEFAULT VALUE IS 7"
+                app:layout_constraintTop_toTopOf="@id/title_min"
+                app:layout_constraintBottom_toBottomOf="@id/title_min"
+                app:layout_constraintLeft_toRightOf="@id/title_min"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <Button
+                android:id="@+id/default_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="APPLY DEFAULT DATEPICKER"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/edit_min"
+                app:layout_constraintRight_toLeftOf="@id/custom_btn"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <Button
+                android:id="@+id/custom_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="APPLY CUSTOM DATEPICKER"
+                app:layout_constraintTop_toTopOf="@id/default_btn"
+                app:layout_constraintBottom_toBottomOf="@id/default_btn"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/default_btn"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
