@@ -41,30 +41,59 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
         this.changedListener = changedListener;
     }
 
+    /** Custom Layout ID **/
     int datePickerLayoutId = R.layout.view_date_picker;
 
+    /** MAX_DAYS of DatePicker. Default is 7 **/
     private int maxDays = DAYS_ONE_WEEK;
+
+    /** MIN_DAYS of DatePicker. Default is 7 **/
     private int minDays = (-1)*DAYS_ONE_WEEK;
+
+    /** Interval Date of DatePicker. Default is 1 **/
     private int distance = DAYS_ONE_DAY;
+
+    /** Date format of DatePicker. Default is YYYY-MM-dd **/
     private String dateFormat = DATE_FORMAT_FULL_SLASH;
 
+
+    /**
+     * Setting MAX_DAYS of DatePicker
+     **/
     public void setMaxDays(int maxDays) {
         this.maxDays = maxDays;
     }
 
+
+    /**
+     * Setting MIN_DAYS of DatePicker
+     * If a number greater than 0 is set, it is made negative.
+     **/
     public void setMinDays(int minDays) {
         if(minDays>=0) this.minDays = (-1)*minDays;
         else this.minDays = minDays;
     }
 
+
+    /**
+     * Setting start date
+     **/
     public void setTargetDate(Date targetDate) {
         this.targetDate = targetDate;
     }
 
+
+    /**
+     * Setting date interval
+     **/
     public void setDistance(int distance) {
         this.distance = distance;
     }
 
+
+    /**
+     * Setting date format
+     **/
     public void setDateFormat(String dateFormat) {
         this.dateFormat = dateFormat;
     }
