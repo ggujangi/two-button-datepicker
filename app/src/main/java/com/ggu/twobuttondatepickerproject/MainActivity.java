@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ggu.twobuttondatepicker.DateUtils;
@@ -18,6 +20,22 @@ public class MainActivity extends AppCompatActivity implements TwoButtonDatePick
 
         TwoButtonDatePicker defaultPickerView = findViewById(R.id.datePickerView_default);
         TwoButtonDatePicker customPickerView = findViewById(R.id.datePickerView_custom);
+        EditText editMaxDays = findViewById(R.id.edit_max);
+        EditText editMinDays = findViewById(R.id.edit_min);
+        Button defaultBtn = findViewById(R.id.default_btn);
+        Button customBtn = findViewById(R.id.custom_btn);
+
+        defaultBtn.setOnClickListener(view->{
+            defaultPickerView.setMaxDays(Integer.parseInt(editMaxDays.getText().toString()));
+            defaultPickerView.setMinDays(Integer.parseInt(editMinDays.getText().toString()));
+            Toast.makeText(this, "APPLY DEFAULT PICKER : "+"MAX_DAYS is :"+editMaxDays.getText().toString()+", MIN_DAYS is : "+editMinDays.getText().toString(), Toast.LENGTH_SHORT).show();
+        });
+
+        customBtn.setOnClickListener(view->{
+            customPickerView.setMaxDays(Integer.parseInt(editMaxDays.getText().toString()));
+            customPickerView.setMinDays(Integer.parseInt(editMinDays.getText().toString()));
+            Toast.makeText(this, "APPLY CUSTOM PICKER : "+"MAX_DAYS is :"+editMaxDays.getText().toString()+", MIN_DAYS is : "+editMinDays.getText().toString(), Toast.LENGTH_SHORT).show();
+        });
 
         defaultPickerView.setDatePickerClickListener(this);
         customPickerView.setDatePickerClickListener(this);
