@@ -6,5 +6,7 @@
         <attr name="ggu_date_min_days" format="integer"/>
         <attr name="ggu_date_distance" format="integer"/>
         <attr name="ggu_date_format" format="string"/>
+        <attr name="ggu_date_adjustVisibility" format="boolean"/>
+        <attr name="ggu_date_adjustSelection" format="boolean"/>
     </declare-styleable>
 </resources>

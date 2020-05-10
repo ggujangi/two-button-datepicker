@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,10 +17,12 @@
             android:id="@+id/title_default"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DEFAULT Two-Button-DatePicker"
+            android:textStyle="bold"
+            android:text="** DEFAULT Two-Button-DatePicker **"
             android:gravity="center"
             android:padding="10dp"
-            android:background="#AAABD3"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="parent"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
@@ -27,8 +30,7 @@
             android:id="@+id/datePickerView_default"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:ggu_date_min_days="3"
-            app:ggu_date_max_days="7"
+            app:ggu_date_adjustSelection="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_default" />
@@ -36,6 +38,7 @@
             android:id="@+id/default_reset_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/datePickerView_default"
@@ -44,24 +47,31 @@
         <TextView
             android:id="@+id/content_default"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.1"
+            android:layout_marginTop="8dp"
+            android:background="#EEEEEE"
+            android:padding="12dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintTop_toBottomOf="@id/default_reset_btn"
             tools:text="MAX_DAYS : 6\nMIN_DAYS : 7"/>
 
 
         <!--Custom DatePicker Area-->
+
         <TextView
             android:id="@+id/title_custom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#CBA6C3"
             android:gravity="center"
             android:padding="10dp"
-            android:text="CUSTOM Two-Button-DatePicker"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"
+            android:text="** CUSTOM Two-Button-DatePicker **"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintTop_toBottomOf="@id/content_default"
-            tools:layout_editor_absoluteX="-34dp" />
+            tools:layout_editor_absoluteX="0dp" />
 
         <com.ggu.twobuttondatepicker.TwoButtonDatePicker
             android:id="@+id/datePickerView_custom"
@@ -70,6 +80,7 @@
             app:ggu_date_layout_id="@layout/test_date_picker"
             app:ggu_date_min_days="3"
             app:ggu_date_max_days="7"
+            app:ggu_date_adjustVisibility="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_custom"/>
@@ -78,6 +89,7 @@
             android:id="@+id/custom_reset_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/datePickerView_custom"
@@ -86,10 +98,13 @@
         <TextView
             android:id="@+id/content_custom"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.1"
+            android:layout_marginTop="8dp"
+            android:background="#EEEEEE"
+            android:padding="12dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintTop_toBottomOf="@id/custom_reset_btn"
-            tools:layout_editor_absoluteX="72dp"
             tools:text="MAX_DAYS : 6\nMIN_DAYS : 7" />
 
         <!--Edit DatePicker Area-->
@@ -97,10 +112,12 @@
             android:id="@+id/title_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="EDIT"
+            android:text="** EDIT **"
             android:gravity="center"
             android:padding="10dp"
-            android:background="#FFFFF2"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimaryDark"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintTop_toBottomOf="@id/content_custom"/>
 

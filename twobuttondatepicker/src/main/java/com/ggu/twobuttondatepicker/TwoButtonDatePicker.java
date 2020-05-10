@@ -3,11 +3,13 @@ package com.ggu.twobuttondatepicker;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.Calendar;
@@ -56,12 +58,23 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
     /** Date format of DatePicker. Default is YYYY-MM-dd **/
     private String dateFormat = DATE_FORMAT_FULL_SLASH;
 
+    /** View Adjust Method **/
+    private boolean adjustVisibility, adjustSelection;
+
 
     /**
      * Setting MAX_DAYS of DatePicker
      **/
     public void setMaxDays(int maxDays) {
         this.maxDays = maxDays;
+    }
+
+
+    /**
+     * Get MAX_DAYS
+     **/
+    public int getMaxDays() {
+        return maxDays;
     }
 
 
@@ -76,10 +89,21 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
 
 
     /**
+     * Get MIN_DAYS
+     **/
+    public int getMinDays() {
+        return minDays;
+    }
+
+
+    /**
      * Setting start date
      **/
     public void setTargetDate(Date targetDate) {
         this.targetDate = targetDate;
+        this.diffDate = this.targetDate;
+
+        if(dateTextView!=null) dateTextView.setText(DateUtils.getTargetDate(targetDate, dateFormat));
     }
 
 
@@ -96,6 +120,46 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
      **/
     public void setDateFormat(String dateFormat) {
         this.dateFormat = dateFormat;
+
+        if(dateTextView!=null) dateTextView.setText(DateUtils.getTargetDate(targetDate, dateFormat));
+    }
+
+
+    /**
+     * Setting the View Adjustment Method when LastDay is reached
+     *
+     * {@adjustSelection} adjusts the selection state of the view
+     * {@adjustVisibility} adjusts the visibility of the view
+     **/
+    public void setAdjustSelection(boolean adjustSelection) {
+        this.adjustSelection = adjustSelection;
+    }
+
+    public void setAdjustVisibility(boolean adjustVisibility) {
+        this.adjustVisibility = adjustVisibility;
+    }
+
+
+    public boolean isAdjustSelection() {
+        return adjustSelection;
+    }
+
+
+    public boolean isAdjustVisibility() {
+        return adjustVisibility;
+    }
+
+
+    /**
+     * Reset Current Date
+     **/
+    public void reset(){
+        targetDate = diffDate;
+        adjustButtonView(prevBtnView, isLastDay(minDays, true));
+        adjustButtonView(nextBtnView, isLastDay(maxDays, false));
+        if(dateTextView!=null) dateTextView.setText(DateUtils.getTargetDate(targetDate, dateFormat));
+
+        Toast.makeText(getContext(), "reset...", Toast.LENGTH_SHORT).show();
     }
 
     private Date targetDate = Calendar.getInstance().getTime();
@@ -127,6 +191,9 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
             distance = a.getInteger(R.styleable.TwoButtonDatePicker_ggu_date_distance, distance);
             dateFormat = a.getString(R.styleable.TwoButtonDatePicker_ggu_date_format);
             if(dateFormat==null) dateFormat = DATE_FORMAT_FULL_SLASH;
+
+            adjustVisibility = a.getBoolean(R.styleable.TwoButtonDatePicker_ggu_date_adjustVisibility, false);
+            adjustSelection = a.getBoolean(R.styleable.TwoButtonDatePicker_ggu_date_adjustSelection, false);
         }finally {
             a.recycle();
         }
@@ -141,10 +208,11 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
 
         nextBtnView.setOnClickListener(this);
         prevBtnView.setOnClickListener(this);
-        setSelectedButton(prevBtnView, !isLastDay(minDays, true));
-        setSelectedButton(nextBtnView, !isLastDay(maxDays, false));
 
-        dateTextView.setText(DateUtils.getTargetDate(targetDate, dateFormat));
+        adjustButtonView(prevBtnView, isLastDay(minDays, true));
+        adjustButtonView(nextBtnView, isLastDay(maxDays, false));
+
+        if(dateTextView!=null) dateTextView.setText(DateUtils.getTargetDate(targetDate, dateFormat));
     }
 
 
@@ -174,8 +242,8 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
         /** View Update **/
         if(dateTextView!=null) dateTextView.setText(DateUtils.getTargetDate(targetDate, dateFormat));
 
-        setSelectedButton(prevBtnView, !isLastDay(minDays, true));
-        setSelectedButton(nextBtnView, !isLastDay(maxDays, false));
+        adjustButtonView(prevBtnView, isLastDay(minDays, true));
+        adjustButtonView(nextBtnView, isLastDay(maxDays, false));
     }
 
     private boolean isLastDay(int limit, boolean minDay){
@@ -185,13 +253,23 @@ public class TwoButtonDatePicker extends LinearLayout implements View.OnClickLis
     }
 
 
-    private void setSelectedButton(View view, boolean isSelected){
+    /**
+     * Adjust Button View Visibility or Selection
+     *
+     * if {@adjustVisibility} is true, Adjust the visibility of the view when the current date reaches the last day
+     * and if {@adjustSelection} is true, Adjust the selection of the view when the current date reaches the last day
+     *
+     * {@adjustVisibility} has higher priority than {@adjustSelection}
+     **/
+    private void adjustButtonView(View view, boolean isLastDay){
         if(view == null) return;
-        view.setSelected(isSelected);
-    }
+        if(adjustSelection){
+            view.setSelected(isLastDay);
+        }
+        Log.d("ButtonTest", "adjustButtonView : "+adjustSelection+", "+isLastDay);
 
-    private void setVisibilityButton(View view, boolean isVisible){
-        if(view == null) return;
-        view.setVisibility(isVisible?VISIBLE:INVISIBLE);
+        if(adjustVisibility){
+            view.setVisibility(isLastDay?INVISIBLE:VISIBLE);
+        }
     }
 }
