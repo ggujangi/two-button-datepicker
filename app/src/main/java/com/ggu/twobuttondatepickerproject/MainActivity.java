@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity implements TwoButtonDatePick
         Button customBtn = findViewById(R.id.custom_btn);
 
         defaultBtn.setOnClickListener(view->{
-            defaultPickerView.setMaxDays(Integer.parseInt(editMaxDays.getText().toString()));
-            defaultPickerView.setMinDays(Integer.parseInt(editMinDays.getText().toString()));
+            defaultPickerView.setMaxDays(getEditTextInteger(editMaxDays));
+            defaultPickerView.setMinDays(getEditTextInteger(editMinDays));
             Toast.makeText(this, "APPLY DEFAULT PICKER : "+"MAX_DAYS is :"+editMaxDays.getText().toString()+", MIN_DAYS is : "+editMinDays.getText().toString(), Toast.LENGTH_SHORT).show();
         });
 
         customBtn.setOnClickListener(view->{
-            customPickerView.setMaxDays(Integer.parseInt(editMaxDays.getText().toString()));
-            customPickerView.setMinDays(Integer.parseInt(editMinDays.getText().toString()));
+            customPickerView.setMaxDays(getEditTextInteger(editMaxDays));
+            customPickerView.setMinDays(getEditTextInteger(editMinDays));
             Toast.makeText(this, "APPLY CUSTOM PICKER : "+"MAX_DAYS is :"+editMaxDays.getText().toString()+", MIN_DAYS is : "+editMinDays.getText().toString(), Toast.LENGTH_SHORT).show();
         });
 
@@ -57,5 +57,10 @@ public class MainActivity extends AppCompatActivity implements TwoButtonDatePick
     @Override
     public void nextButton(View view, boolean lastDay) {
         if(lastDay) Toast.makeText(this, "nextButton : isLastDay", Toast.LENGTH_SHORT).show();
+    }
+
+    private int getEditTextInteger(EditText view){
+        if(view.getText() == null) return 7;
+        else return Integer.parseInt(view.getText().toString());
     }
 }
